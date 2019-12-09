@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyFace.Helpers;
+using MyFace.DataAccess;
 
 namespace MyFace.Middleware
 {
@@ -19,12 +20,20 @@ namespace MyFace.Middleware
             {
                 //TODO get password from the database.
                 // If username and password match in the database
-                    // Log them in
-                const string thePassword = "secret";
-                if (userNameAndPassword.Password == thePassword)
+                UserRepository userRepository = new UserRepository();
+                var users = userRepository.GetAllUsers();
+
+                foreach (var person in users)
                 {
-                    return;
+                    if (person.username == userNameAndPassword.Username)
+                    {
+                        if (person.password == userNameAndPassword.Password)
+                        {
+                            return;
+                        }
+                    }
                 }
+                    // Log them in
             }
             const string realm = "MyFace";
 

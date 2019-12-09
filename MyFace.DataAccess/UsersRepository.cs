@@ -12,19 +12,19 @@ namespace MyFace.DataAccess
 {
     public interface IUserRepository
     {
-        IEnumerable<string> GetAllUsers();
+        IEnumerable<Users> GetAllUsers();
         IEnumerable<string> GetFullName();
     }
 
     public class UserRepository : IUserRepository
     {
 
-        public IEnumerable<string> GetAllUsers()
+        public IEnumerable<Users> GetAllUsers()
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
                 //TODO Fetch user list from user table instead of from posts and senders.
-                return db.Query<string>("SELECT * FROM \"Users\"");
+                return db.Query<Users>("SELECT * FROM \"Users\"");
             }
         }
         public IEnumerable<string> GetFullName()

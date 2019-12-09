@@ -14,8 +14,12 @@ namespace MyFace.Models.ViewModels
 
         public void OnPost()
         {
-            var DataAccess = new AddUser();
-            DataAccess.AddUserToSite(Username, Password, FullName);
+            var user = new AddUser();
+            var EncpytPassword = new HashPassword();
+
+            Password = EncpytPassword.Hashpassword(Password);
+
+            user.AddUserToSite(Username, Password, FullName);
         }
     }
 }
