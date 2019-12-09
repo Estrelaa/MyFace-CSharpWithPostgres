@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Web.Mvc;
-using MyFace.DataAccess;
+﻿using MyFace.DataAccess;
 using MyFace.Helpers;
 using MyFace.Middleware;
 using MyFace.Models.ViewModels;
+using System.Web.Mvc;
 
 namespace MyFace.Controllers
 {
