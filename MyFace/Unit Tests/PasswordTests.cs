@@ -1,11 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using Dapper;
 using MyFace.DataAccess;
-using System.Collections.Generic;
+using NUnit.Framework;
 using System.Linq;
-using System.Web;
-using Dapper;
-using MyFace.DataAccess;
 
 namespace MyFace.Unit_Tests
 {

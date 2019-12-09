@@ -1,8 +1,4 @@
-﻿using System;
-using MyFace.DataAccess;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MyFace.DataAccess;
 
 namespace MyFace.Models.ViewModels
 {

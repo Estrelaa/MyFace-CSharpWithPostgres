@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Npgsql;
 using System.Configuration;
 using System.Data;
-using Npgsql;
 
 namespace MyFace.DataAccess
 {
