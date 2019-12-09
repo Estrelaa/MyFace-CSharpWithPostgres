@@ -9,7 +9,7 @@ namespace MyFace.Unit_Tests
     public class PasswordTests
     {
         [Test]
-        public void WhenUserIsMadeIsPassWordInPlainText()
+        public void PasswordForNewUserShouldBeHashed()
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
@@ -33,7 +33,7 @@ namespace MyFace.Unit_Tests
             }
         }
         [Test]
-        public void PasswordHashCanBeCheckedSoThatThePassWordTypedLetsYouIn()
+        public void CanCheckThatPasswordGivenIsSameAsHashedPassword()
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
