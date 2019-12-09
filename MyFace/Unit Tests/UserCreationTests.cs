@@ -16,13 +16,21 @@ namespace MyFace.Unit_Tests
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
-                db.Execute("INSERT INTO \"Users\" (username, password, fullname) VALUES(\"Jonh49\", \"Jam421\", \"John Squarepants\")");
-                var user = db.Query<string>("SELECT \"UserName\" FROM \"Users\"");
+                var userName = "John49";
+                var password = "Jam421";
+                var fullName = "John Squarepants";
 
-                Assert.AreEqual("John41", user);
+                db.Execute("INSERT INTO \"Users\" (username, password, fullname) VALUES(@userName, @password, @fullName)", new { userName, password, fullName });
+                var user = db.Query<string>("SELECT \"username\" FROM \"Users\"");
+
+                foreach (var person in user.Reverse())
+                {
+                    Assert.AreEqual("John49", person);
+                    break;
+                }
 
                 // Delete them from the table 
-                db.Execute("DELETE FROM \"Users\" WHERE \"UserName\" = \"John49\"");
+                db.Execute("DELETE FROM \"Users\" WHERE \"username\" = @userName", new { userName });
             }
         }
     }

@@ -18,6 +18,8 @@ namespace MyFace.Middleware
             if (userNameAndPassword != null)
             {
                 //TODO get password from the database.
+                // If username and password match in the database
+                    // Log them in
                 const string thePassword = "secret";
                 if (userNameAndPassword.Password == thePassword)
                 {
