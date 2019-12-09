@@ -19,7 +19,10 @@ namespace MyFace.Middleware
             {
                 //TODO get password from the database.
                 const string thePassword = "secret";
-                if (userNameAndPassword.Password == thePassword) return;
+                if (userNameAndPassword.Password == thePassword)
+                {
+                    return;
+                }
             }
             const string realm = "MyFace";
 

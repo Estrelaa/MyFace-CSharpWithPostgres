@@ -13,7 +13,7 @@ namespace MyFace.Controllers
         [HttpPost]
         public ActionResult SignUp(LoginViewModel loginViewModel)
         {
-            //TODO Implement signing up
+            loginViewModel.OnPost();
             return RedirectToAction("Index","UserList");
         }
     }

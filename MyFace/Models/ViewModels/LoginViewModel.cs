@@ -12,10 +12,10 @@ namespace MyFace.Models.ViewModels
         public string Password { get; set; }
         public string FullName { get; set; }
 
-        public IEnumerable<string> OnPost()
+        public void OnPost()
         {
             var DataAccess = new AddUser();
-            return DataAccess.AddUserToSite(Username, Password, FullName);
+            DataAccess.AddUserToSite(Username, Password, FullName);
         }
     }
 }

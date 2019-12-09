@@ -9,12 +9,11 @@ namespace MyFace.DataAccess
 {
     public class AddUser
     {
-        public IEnumerable<string> AddUserToSite(string UserName, string PassWord, string FullName)
+        public void  AddUserToSite(string UserName, string PassWord, string FullName)
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
-                //TODO Fetch user list from user table instead of from posts and senders.
-                return db.Query<string>("(SELECT DISTINCT recipient FROM posts) UNION (SELECT DISTINCT sender FROM posts)");
+                db.Execute("INSERT INTO \"Users\" (username, password, fullname) VALUES(@UserName, @PassWord, @FullName)", new { UserName, PassWord, FullName } );
             }
         }
     }
