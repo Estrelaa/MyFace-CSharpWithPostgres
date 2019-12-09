@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUser.cs" />
     <Compile Include="ConnectionHelper.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="PostRepository.cs" />
