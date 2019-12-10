@@ -10,10 +10,12 @@ namespace MyFace.Controllers
     public class WallController : Controller
     {
         private readonly IPostRepository postRepository;
+        private readonly IUserRepository userRepository;
 
-        public WallController(IPostRepository postRepository)
+        public WallController(IPostRepository postRepository, IUserRepository userRepository)
         {
             this.postRepository = postRepository;
+            this.userRepository = userRepository;
         }
 
         // GET: Wall

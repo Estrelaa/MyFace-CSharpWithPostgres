@@ -19,6 +19,13 @@ namespace MyFace.DataAccess
                 return db.Query<Users>("SELECT * FROM \"Users\"");
             }
         }
+        public IEnumerable<Users> GetUser(string Username)
+        {
+            using (var db = ConnectionHelper.CreateSqlConnection())
+            {
+                return db.Query<Users>("SELECT * FROM \"Users\" WHERE \"username\" = @Username", new { Username });
+            }
+        }
         public string GetFullName(string UserName)
         {
             using (var db = ConnectionHelper.CreateSqlConnection())

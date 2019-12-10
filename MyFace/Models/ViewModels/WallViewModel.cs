@@ -15,7 +15,6 @@ namespace MyFace.Models.ViewModels
         public WallViewModel(IEnumerable<Post> posts, string ownerUsername)
         {
             Posts = posts.Select(post => new PostViewModel(post));
-            OwnerUsername = ownerUsername;
         }
     }
 }

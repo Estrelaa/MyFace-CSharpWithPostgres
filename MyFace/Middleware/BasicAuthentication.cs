@@ -15,11 +15,10 @@ namespace MyFace.Middleware
         {
             var req = filterContext.HttpContext.Request;
             var userNameAndPassword = AuthenticationHelper.ExtractUsernameAndPassword(req);
+            var Hashpassword = new HashPassword();
 
             if (userNameAndPassword != null)
             {
-                //TODO get password from the database.
-                // If username and password match in the database
                 UserRepository userRepository = new UserRepository();
                 var users = userRepository.GetAllUsers();
 
@@ -27,13 +26,13 @@ namespace MyFace.Middleware
                 {
                     if (person.username == userNameAndPassword.Username)
                     {
-                        if (person.password == userNameAndPassword.Password)
+                        
+                        if (Hashpassword.CovertPasswordBack(person.password, userNameAndPassword.Password))
                         {
                             return;
                         }
                     }
                 }
-                    // Log them in
             }
             const string realm = "MyFace";
 
