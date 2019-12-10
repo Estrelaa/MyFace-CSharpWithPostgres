@@ -17,9 +17,5 @@ namespace MyFace.Models.ViewModels
 
             user.AddUserToSite(Username, Password, FullName);
         }
-        public void LoginToGalaxy()
-        {
-            
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using MyFace.Models.ViewModels;
+using MyFace.DataAccess;
 
 namespace MyFace.Controllers
 {
@@ -17,9 +18,21 @@ namespace MyFace.Controllers
             return RedirectToAction("Index","UserList");
         }
         [HttpPost]
-        public ActionResult Login(LoginViewModel loginViewModel)
+        public ActionResult Login(Users login)
         {
-            loginViewModel.Signup();
+            var users = new Users();
+            var UR = new UserRepository();
+            var HP = new HashPassword();
+
+            users = UR.GetUser(login);
+
+            if (users.username == login.username)
+            {
+                if (HP.CovertPasswordBack(users.password, login.password))
+                {
+                    Session["User"] = users;
+                }
+            }
             return RedirectToAction("Index", "UserList");
         }
     }
