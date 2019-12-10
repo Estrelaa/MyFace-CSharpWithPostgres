@@ -161,6 +161,7 @@
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Unit Tests\PasswordTests.cs" />
     <Compile Include="Unit Tests\UserCreationTests.cs" />
+    <Compile Include="Unit Tests\WallTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\myface.css" />
