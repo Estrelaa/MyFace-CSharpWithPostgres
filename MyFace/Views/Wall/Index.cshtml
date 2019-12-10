@@ -19,19 +19,28 @@
             says:
         </div>
         @post.Content
-        if (post.Sender == Model.LoggedInUser)
+
+        using (Html.BeginForm("DeleteWall", "Wall", FormMethod.Post))
         {
-            <input type="submit" value="Delete" class="btn btn-default" formmethod="post" formaction=""/>
+            if (post.Sender == Model.LoggedInUser)
+            {
+                <input type="submit" value="Delete" class="btn btn-default" />
+                <input type="hidden" name="id" value="@post.id" />
+                <input type="hidden" name="OwnerUsername" value="@Model.OwnerUsername" />
+                <input type="hidden" name="fullname" value="@Model.fullname" />
+            }
         }
     }
-        <h1>Write something on @Model.fullname's wall!</h1>
 
-        @using (Html.BeginForm("NewWall", "Wall", FormMethod.Post))
-        {
-            <div>
-                @Html.HiddenFor(model => model.OwnerUsername)
-                @Html.EditorFor(model => model.NewPost)
-                <input type="submit" value="Post!" />
-            </div>
-        }
+    <h1>Write something on @Model.fullname's wall!</h1>
+
+    @using (Html.BeginForm("NewWall", "Wall", FormMethod.Post))
+    {
+<div>
+    @Html.HiddenFor(model => model.OwnerUsername)
+    @Html.EditorFor(model => model.NewPost)
+    <input type="hidden" name="fullname" value="@Model.fullname" />
+    <input type="submit" value="Post!" />
+</div>
+    }
 </div>

@@ -7,12 +7,14 @@ namespace MyFace.Models.ViewModels
         public string Sender { get; }
         public string Receiver { get; }
         public string Content { get; }
+        public int id { get; set; }
 
         public PostViewModel(Post post)
         {
             Sender = post.Sender;
             Receiver = post.Recipient;
             Content = post.Content;
+            id = post.id;
         }
     }
 }

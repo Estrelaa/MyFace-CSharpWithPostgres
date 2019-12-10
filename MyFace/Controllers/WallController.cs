@@ -33,7 +33,13 @@ namespace MyFace.Controllers
         {
             var username = AuthenticationHelper.ExtractUsernameAndPassword(Request).Username;
             postRepository.CreatePost(new Post() { Content = wallViewModel.NewPost, Recipient = wallViewModel.OwnerUsername, Sender = username });
-            return RedirectToAction("Index", new {username= wallViewModel.OwnerUsername});
+            return RedirectToAction("Index", new {username= wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
+        }
+        [HttpPost]
+        public ActionResult DeleteWall(WallViewModel wallViewModel)
+        {
+            postRepository.DeletePost(new Post { id = wallViewModel.id });
+            return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
         }
     }
 }

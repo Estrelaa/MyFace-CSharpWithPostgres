@@ -11,6 +11,7 @@ namespace MyFace.Models.ViewModels
         public string fullname { get; set; }
         public string LoggedInUser { get; set; }
         public string NewPost { get; set; }
+        public int id { get; set; }
 
         public WallViewModel() {}
 
