@@ -1,7 +1,11 @@
 ﻿@using MyFace.Helpers
+@using MyFace.DataAccess
 <!DOCTYPE html>
 <html>
-@{ string username = AuthenticationHelper.ExtractUsernameAndPassword(request: Request)?.Username; }
+@{ string username = AuthenticationHelper.ExtractUsernameAndPassword(request: Request)?.Username;
+    var Users = new UserRepository();
+    string fullname = Users.GetFullName(username);
+    }
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +23,7 @@
             @Html.ActionLink($"Users", "Index", "UserList", "",new { @class = "nav-link" })
 
             <div class="nav-align-right">
-                @Html.ActionLink($"🙂 {username}", "Index", "Wall", new { username = username },new { @class = "nav-link" })
+                @Html.ActionLink($"🙂 {username} / {fullname}", "Index", "Wall", new { username = username, fullname = fullname },new { @class = "nav-link" })
             </div>
         }
     </div>

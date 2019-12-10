@@ -6,7 +6,7 @@ namespace MyFace.DataAccess
     public interface IUserRepository
     {
         IEnumerable<Users> GetAllUsers();
-        IEnumerable<string> GetFullName();
+        string GetFullName(string UserName);
     }
 
     public class UserRepository : IUserRepository
@@ -16,16 +16,20 @@ namespace MyFace.DataAccess
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
-                //TODO Fetch user list from user table instead of from posts and senders.
                 return db.Query<Users>("SELECT * FROM \"Users\"");
             }
         }
-        public IEnumerable<string> GetFullName()
+        public string GetFullName(string UserName)
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
-                //TODO Fetch user list from user table instead of from posts and senders.
-                return db.Query<string>("SELECT \"fullname\" FROM \"Users\"");
+                var result = db.Query<string>("SELECT \"fullname\" FROM \"Users\" where \"username\" = @UserName", new { UserName }).AsList();
+
+                foreach (var name in result)
+                {
+                    return name;
+                }
+                return result.ToString();
             }
         }
     }
