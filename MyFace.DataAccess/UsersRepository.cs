@@ -6,6 +6,7 @@ namespace MyFace.DataAccess
     public interface IUserRepository
     {
         IEnumerable<Users> GetAllUsers();
+        IEnumerable<Users> GetUser(string Username);
         string GetFullName(string UserName);
     }
 

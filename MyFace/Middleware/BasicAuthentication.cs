@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using MyFace.DataAccess;
 using MyFace.Helpers;
-using MyFace.DataAccess;
+using System.Web.Mvc;
 
 namespace MyFace.Middleware
 {
-    //TODO Replace basic authentication with a better authentication method.
     public class BasicAuthenticationAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)

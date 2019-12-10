@@ -8,7 +8,7 @@
         <h1>Say Hi to all the My🙂Face users!</h1>
         @foreach (var user in Model.ListOfUsers)
             {
-                <p class="user-link">@Html.ActionLink($"🙂 {user.fullname}", "Index", "Wall", new {fullname = user.fullname}, new { @class = "user-link"})</p>
+                <p class="user-link">@Html.ActionLink($"🙂 {user.fullname}", "Index", "Wall", new {username = user.username, fullname = user.fullname}, new { @class = "user-link"})</p>
             }
     </div>
 

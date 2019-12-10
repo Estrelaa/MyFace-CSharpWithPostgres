@@ -3,6 +3,7 @@ using MyFace.Helpers;
 using MyFace.Middleware;
 using MyFace.Models.ViewModels;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace MyFace.Controllers
 {
@@ -10,22 +11,19 @@ namespace MyFace.Controllers
     public class WallController : Controller
     {
         private readonly IPostRepository postRepository;
-        private readonly IUserRepository userRepository;
 
-        public WallController(IPostRepository postRepository, IUserRepository userRepository)
+        public WallController(IPostRepository postRepository)
         {
             this.postRepository = postRepository;
-            this.userRepository = userRepository;
         }
-
         // GET: Wall
-        public ActionResult Index(string username)
+        public ActionResult Index(string username, string fullname)
         {
-            var posts = postRepository.GetPostsOnWall(username);
+            var posts = postRepository.GetPostsOnWall(username);                     
             var viewModel = new WallViewModel(posts, username);
+            viewModel.fullname = fullname;
             return View(viewModel);
         }
-
         [HttpPost]
         public ActionResult NewWall(WallViewModel wallViewModel)
         {

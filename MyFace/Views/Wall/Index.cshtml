@@ -2,7 +2,7 @@
 @model MyFace.Models.ViewModels.WallViewModel
 
 @{
-    ViewBag.Title = Model.OwnerUsername + "'s Wall :: My🙂Face";
+    ViewBag.Title = Model.fullname + "'s Wall :: My🙂Face";
 }
 
 @section Styles {
@@ -10,7 +10,7 @@
 }
 
 <div class="limited-width-container">
-    <h1>@Model.OwnerUsername's wall</h1>
+    <h1>@Model.fullname's wall</h1>
 
     @foreach (var post in Model.Posts)
     {
@@ -21,7 +21,7 @@
         @post.Content
     }
 
-    <h1>Write something on @Model.OwnerUsername's wall!</h1>
+    <h1>Write something on @Model.fullname's wall!</h1>
 
 
     @using (Html.BeginForm("NewWall", "Wall", FormMethod.Post))
