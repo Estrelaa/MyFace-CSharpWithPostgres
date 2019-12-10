@@ -13,8 +13,14 @@ namespace MyFace.Controllers
         [HttpPost]
         public ActionResult SignUp(LoginViewModel loginViewModel)
         {
-            loginViewModel.OnPost();
+            loginViewModel.Signup();
             return RedirectToAction("Index","UserList");
+        }
+        [HttpPost]
+        public ActionResult Login(LoginViewModel loginViewModel)
+        {
+            loginViewModel.Signup();
+            return RedirectToAction("Index", "UserList");
         }
     }
 }

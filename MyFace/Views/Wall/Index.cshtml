@@ -1,7 +1,7 @@
 ﻿@model MyFace.Models.ViewModels.WallViewModel
 
 @{
-    ViewBag.Title = Model.fullname + "'s Wall :: My🙂Face";
+    ViewBag.Title = Model.fullname + "'s Wall :: Galaxy";
 }
 
 @section Styles {
@@ -14,7 +14,7 @@
     @foreach (var post in Model.Posts)
     {
         <div class="post-sender">
-            @Html.ActionLink($"🙂 {@post.Sender}", "Index", "Wall", new { username = Model.OwnerUsername }, new { @class = "user-link" })
+            @Html.ActionLink($"{@post.Sender}", "Index", "Wall", new { username = Model.OwnerUsername }, new { @class = "user-link" })
             says:
         </div>
         @post.Content

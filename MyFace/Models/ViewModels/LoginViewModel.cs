@@ -8,7 +8,7 @@ namespace MyFace.Models.ViewModels
         public string Password { get; set; }
         public string FullName { get; set; }
 
-        public void OnPost()
+        public void Signup()
         {
             var user = new AddUser();
             var EncpytPassword = new HashPassword();
@@ -16,6 +16,10 @@ namespace MyFace.Models.ViewModels
             Password = EncpytPassword.Hashpassword(Password);
 
             user.AddUserToSite(Username, Password, FullName);
+        }
+        public void LoginToGalaxy()
+        {
+            
         }
     }
 }

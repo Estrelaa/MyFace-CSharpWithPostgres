@@ -17,13 +17,13 @@
 <body>
 <nav>
     <div class="nav-inner">
-        @Html.ActionLink($"My🙂Face", "Index", "Home", "",new { @class = "nav-link" })
+        @Html.ActionLink($"Galaxy", "Index", "Home", "",new { @class = "nav-link" })
         @if (!string.IsNullOrEmpty(username))
         {
             @Html.ActionLink($"Users", "Index", "UserList", "",new { @class = "nav-link" })
 
             <div class="nav-align-right">
-                @Html.ActionLink($"🙂 {username} / {fullname}", "Index", "Wall", new { username = username, fullname = fullname },new { @class = "nav-link" })
+                @Html.ActionLink($"{username} / {fullname}", "Index", "Wall", new { username = username, fullname = fullname },new { @class = "nav-link" })
             </div>
         }
     </div>

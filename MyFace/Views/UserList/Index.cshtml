@@ -1,14 +1,14 @@
 ﻿@model MyFace.Models.ViewModels.UserListViewModel
 @{
-    ViewBag.Title = "UserList";
+    ViewBag.Title = "Galaxy";
 }
 
 <body>
     <div class="limited-width-container">
-        <h1>Say Hi to all the My🙂Face users!</h1>
+        <h1>Other Galaxy users!</h1>
         @foreach (var user in Model.ListOfUsers)
             {
-                <p class="user-link">@Html.ActionLink($"🙂 {user.fullname}", "Index", "Wall", new {username = user.username, fullname = user.fullname}, new { @class = "user-link"})</p>
+                <p class="user-link">@Html.ActionLink($"{user.fullname}", "Index", "Wall", new {username = user.username, fullname = user.fullname}, new { @class = "user-link"})</p>
             }
     </div>
 

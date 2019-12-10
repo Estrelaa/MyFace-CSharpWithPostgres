@@ -6,7 +6,7 @@
 }
 
 @{
-    ViewBag.Title = "Sign Up :: Galaxy";
+    ViewBag.Title = "Login :: Galaxy";
 }
 
 
@@ -14,7 +14,7 @@
 {
     @Html.AntiForgeryToken()
 <div class="limited-width-container">
-    <h1>Sign Up to Adbook</h1>
+    <h1>Login to Galaxy</h1>
     <div class="form-horizontal">
         <div class="form-row">
             @Html.LabelFor(model => model.Username)
@@ -24,11 +24,7 @@
             @Html.LabelFor(model => model.Password)
             @Html.EditorFor(model => model.Password)
             </div>
-        <div class="form-row">
-            @Html.LabelFor(model => model.FullName)
-            @Html.EditorFor(model => model.FullName)
-        </div>
-        <input type="submit" value="Sign up!" class="btn btn-default" />
+        <input type="submit" value="Login" class="btn btn-default" />
     </div>
 </div>
 }
