@@ -21,7 +21,11 @@ namespace MyFace.Controllers
         {
             var posts = postRepository.GetPostsOnWall(username);                     
             var viewModel = new WallViewModel(posts, username);
+
             viewModel.fullname = fullname;
+            viewModel.OwnerUsername = username;
+            viewModel.LoggedInUser = AuthenticationHelper.ExtractUsernameAndPassword(request: Request)?.Username;
+
             return View(viewModel);
         }
         [HttpPost]
