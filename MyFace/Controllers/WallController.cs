@@ -3,7 +3,6 @@ using MyFace.Helpers;
 using MyFace.Middleware;
 using MyFace.Models.ViewModels;
 using System.Web.Mvc;
-using System.Linq;
 
 namespace MyFace.Controllers
 {
