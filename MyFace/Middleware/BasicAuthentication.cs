@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace MyFace.Middleware
 {
-    public class BasicAuthenticationAttribute : ActionFilterAttribute
+    public class Authentication : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

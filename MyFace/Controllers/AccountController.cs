@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using MyFace.Models.ViewModels;
 using MyFace.DataAccess;
+using System.Web.Security;
 
 namespace MyFace.Controllers
 {
@@ -9,6 +10,10 @@ namespace MyFace.Controllers
         public ActionResult SignUp()
         {
             return View( new LoginViewModel());
+        }
+        public ActionResult Login()
+        {
+            return View(new LoginViewModel());
         }
 
         [HttpPost]
@@ -20,19 +25,21 @@ namespace MyFace.Controllers
         [HttpPost]
         public ActionResult Login(Users login)
         {
-            var users = new Users();
-            var UR = new UserRepository();
-            var HP = new HashPassword();
+            var ur = new UserRepository();
+            var hp = new HashPassword();
+            var getUser = ur.GetUser(login.username);
 
-            //users = UR.GetUser(login);
-
-            if (users.username == login.username)
+            foreach (var user in getUser)
             {
-                if (HP.CovertPasswordBack(users.password, login.password))
+                if (login.username == user.username)
                 {
-                    Session["User"] = users;
+                    if (hp.CovertPasswordBack(user.password, login.password))
+                    {
+                        FormsAuthentication.RedirectFromLoginPage(login.username, true);
+                        return RedirectToAction("Index", "UserList");
+                    }
                 }
-            }
+            }         
             return RedirectToAction("Index", "UserList");
         }
     }

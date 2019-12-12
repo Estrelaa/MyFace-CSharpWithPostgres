@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MyFace.Controllers
 {
-    [BasicAuthentication]
+    [Authorize]
     public class WallController : Controller
     {
         private readonly IPostRepository postRepository;
@@ -23,14 +23,14 @@ namespace MyFace.Controllers
 
             viewModel.fullname = fullname;
             viewModel.OwnerUsername = username;
-            viewModel.LoggedInUser = AuthenticationHelper.ExtractUsernameAndPassword(request: Request)?.Username;
+            viewModel.LoggedInUser = User?.Identity?.Name;
 
             return View(viewModel);
         }
         [HttpPost]
         public ActionResult NewWall(WallViewModel wallViewModel)
         {
-            var username = AuthenticationHelper.ExtractUsernameAndPassword(Request).Username;
+            var username = User?.Identity?.Name; ;
             postRepository.CreatePost(new Post() { Content = wallViewModel.NewPost, Recipient = wallViewModel.OwnerUsername, Sender = username });
             return RedirectToAction("Index", new {username= wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
         }

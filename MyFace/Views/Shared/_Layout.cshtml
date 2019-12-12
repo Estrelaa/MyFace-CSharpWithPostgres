@@ -2,7 +2,7 @@
 @using MyFace.DataAccess
 <!DOCTYPE html>
 <html>
-@{ string username = AuthenticationHelper.ExtractUsernameAndPassword(request: Request)?.Username;
+@{ string username = User?.Identity?.Name;
     var Users = new UserRepository();
     string fullname = Users.GetFullName(username);
     }
