@@ -24,10 +24,13 @@
             if (post.Sender == Model.LoggedInUser)
             {
                 <input type="submit" value="Delete" class="btn btn-default" />
+
                 <input type="hidden" name="id" value="@post.id" />
                 <input type="hidden" name="OwnerUsername" value="@Model.OwnerUsername" />
                 <input type="hidden" name="fullname" value="@Model.fullname" />
             }
+            <input type="submit" value="Frown!" class="btn btn-default" formaction="Wall" />
+            <input type="submit" value="Like!" class="btn btn-default" formaction="Wall"/>
         }
     }
 
@@ -35,11 +38,11 @@
 
     @using (Html.BeginForm("NewWall", "Wall", FormMethod.Post))
     {
-<div>
-    @Html.HiddenFor(model => model.OwnerUsername)
-    @Html.EditorFor(model => model.NewPost)
-    <input type="hidden" name="fullname" value="@Model.fullname" />
-    <input type="submit" value="Post!" />
-</div>
+        <div>
+            @Html.HiddenFor(model => model.OwnerUsername)
+            @Html.EditorFor(model => model.NewPost)
+            <input type="hidden" name="fullname" value="@Model.fullname" />
+            <input type="submit" value="Post!" />
+        </div>
     }
 </div>

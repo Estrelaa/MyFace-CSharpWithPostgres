@@ -40,5 +40,15 @@ namespace MyFace.Controllers
             postRepository.DeletePost(new Post { id = wallViewModel.id });
             return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
         }
+        [HttpPost]
+        public ActionResult Frown(WallViewModel wallViewModel)
+        {
+            return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
+        }
+        [HttpPost]
+        public ActionResult Like(WallViewModel wallViewModel)
+        {
+            return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
+        }
     }
 }

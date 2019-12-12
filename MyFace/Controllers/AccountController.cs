@@ -24,7 +24,7 @@ namespace MyFace.Controllers
             var UR = new UserRepository();
             var HP = new HashPassword();
 
-            users = UR.GetUser(login);
+            //users = UR.GetUser(login);
 
             if (users.username == login.username)
             {
