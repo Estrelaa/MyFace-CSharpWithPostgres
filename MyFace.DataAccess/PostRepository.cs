@@ -34,5 +34,12 @@ namespace MyFace.DataAccess
                 db.Query<Post>("DELETE FROM Posts WHERE \"id\" = @id", new { id }) ;
             }
         }
+        public void AddReaction(Post CurrentPost)
+        {
+            using (var db = ConnectionHelper.CreateSqlConnection())
+            {
+                db.Query<Post>("INSERT INTO Posts WHERE \"id\" = @id VALUES(@Reactions);", CurrentPost);
+            }
+        }
     }
 }
