@@ -29,8 +29,19 @@
                 <input type="hidden" name="OwnerUsername" value="@Model.OwnerUsername" />
                 <input type="hidden" name="fullname" value="@Model.fullname" />
             }
-            <input type="submit" value="Frown!" class="btn btn-default" formaction="Wall" />
-            <input type="submit" value="Like!" class="btn btn-default" formaction="Wall"/>
+        }
+        using (Html.BeginForm("Frown", "Wall", FormMethod.Post))
+        { 
+            if ()
+            <input type="submit" value="Frown!" class="btn btn-default" />
+            <input type="hidden" name="id" value="@post.id" />
+            <input type="hidden" name="LoggedInUser" value="@Model.LoggedInUser" />
+        }
+        using (Html.BeginForm("Like", "Wall", FormMethod.Post))
+        {
+            <input type="submit" value="Like!" class="btn btn-default" />
+            <input type="hidden" name="id" value="@post.id" />
+            <input type="hidden" name="LoggedInUser" value="@Model.LoggedInUser" />
         }
     }
 

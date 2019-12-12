@@ -8,6 +8,7 @@ namespace MyFace.DataAccess
         IEnumerable<Post> GetPostsOnWall(string recipient);
         void CreatePost (Post newPost);
         void DeletePost(Post id);
+        void AddReaction(Post CurrentPost, string UserName);
     }
 
     public class PostRepository : IPostRepository
@@ -31,14 +32,15 @@ namespace MyFace.DataAccess
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
                 var id = CurrentPost.id;
-                db.Query<Post>("DELETE FROM Posts WHERE \"id\" = @id", new { id }) ;
+                db.Query<Post>("DELETE FROM Posts WHERE \"id\" = @id", new { id });
             }
         }
-        public void AddReaction(Post CurrentPost)
+        public void AddReaction(Post CurrentPost, string UserName)
         {
             using (var db = ConnectionHelper.CreateSqlConnection())
             {
-                db.Query<Post>("INSERT INTO Posts WHERE \"id\" = @id VALUES(@Reactions);", CurrentPost);
+                var Reaction = ReactionsLogic.FormatAddReaction(CurrentPost.Reactions, UserName);
+                db.Query<Post>($"UPDATE posts SET reactions = \'{Reaction}\' WHERE id = {CurrentPost.id};");
             }
         }
     }

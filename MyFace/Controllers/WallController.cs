@@ -43,11 +43,13 @@ namespace MyFace.Controllers
         [HttpPost]
         public ActionResult Frown(WallViewModel wallViewModel)
         {
+            postRepository.AddReaction(new Post() { id = wallViewModel.id, Reactions = "frown" }, wallViewModel.LoggedInUser);
             return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
         }
         [HttpPost]
         public ActionResult Like(WallViewModel wallViewModel)
         {
+            postRepository.AddReaction(new Post() { id = wallViewModel.id, Reactions = "Like" }, wallViewModel.LoggedInUser);
             return RedirectToAction("Index", new { username = wallViewModel.OwnerUsername, fullname = wallViewModel.fullname });
         }
     }

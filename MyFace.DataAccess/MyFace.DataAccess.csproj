@@ -90,6 +90,7 @@
     <Compile Include="Post.cs" />
     <Compile Include="PostRepository.cs" />
     <Compile Include="HashPassword.cs" />
+    <Compile Include="ReactionsLogic.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
